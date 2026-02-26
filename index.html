@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ledger — AI Personal Finance Manager</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <div class="container nav-inner">
+      <a href="#" class="nav-logo">
+        <img src="data:image/jpeg;base64,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" alt="Ledger logo" class="nav-logo-img" />
+        <span class="nav-logo-name">Ledger</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#health">AI Score</a></li>
+        <li><a href="#security">Security</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+      <a href="Ledger.apk" class="btn-nav-cta" id="navDownloadBtn">Download APK</a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <ul>
+        <li><a href="#features" class="mobile-link">Features</a></li>
+        <li><a href="#how-it-works" class="mobile-link">How It Works</a></li>
+        <li><a href="#health" class="mobile-link">AI Score</a></li>
+        <li><a href="#security" class="mobile-link">Security</a></li>
+        <li><a href="#about" class="mobile-link">About</a></li>
+      </ul>
+      <a href="Ledger.apk" class="btn-mobile-dl">Download APK</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-noise"></div>
+    <div class="hero-blob hero-blob-1"></div>
+    <div class="hero-blob hero-blob-2"></div>
+    <div class="container hero-inner">
+      <div class="hero-text">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>AI-Powered Finance Intelligence
+        </div>
+        <h1 class="hero-title">
+          Take Control of<br />
+          <em>Your Finances</em><br />
+          with Ledger
+        </h1>
+        <p class="hero-sub">
+          AI-powered personal finance manager designed to track expenses, forecast spending, and improve financial discipline — all in one seamless app.
+        </p>
+        <div class="hero-actions">
+          <button class="btn-primary ripple-btn" id="heroDownloadBtn">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download APK
+          </button>
+          <a href="#features" class="btn-ghost">
+            Explore Features <span class="arrow-icon">→</span>
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><span class="stat-val">12+</span><span class="stat-lbl">AI Features</span></div>
+          <div class="stat-div"></div>
+          <div class="stat"><span class="stat-val">0–100</span><span class="stat-lbl">Health Score</span></div>
+          <div class="stat-div"></div>
+          <div class="stat"><span class="stat-val">100%</span><span class="stat-lbl">Privacy First</span></div>
+        </div>
+      </div>
+
+      <div class="hero-phone-wrap">
+        <div class="hero-phone-shadow"></div>
+        <div class="hero-phone">
+          <div class="phone-notch"></div>
+          <div class="phone-screen-hero">
+            <div class="app-header">
+              <div>
+                <div class="app-greeting">Good morning 👋</div>
+                <div class="app-subgreet">Here's your overview</div>
+              </div>
+              <div class="app-avatar"></div>
+            </div>
+            <div class="app-balance-card">
+              <span class="bal-label">Total Balance</span>
+              <span class="bal-amount">₹48,290</span>
+              <div class="bal-change">▲ 12.4% this month</div>
+            </div>
+            <div class="app-chart-area">
+              <div class="chart-label">Weekly Spending</div>
+              <div class="chart-bars">
+                <div class="bar-wrap"><div class="bar" style="--h:55%"></div><span>M</span></div>
+                <div class="bar-wrap"><div class="bar" style="--h:35%"></div><span>T</span></div>
+                <div class="bar-wrap"><div class="bar" style="--h:70%"></div><span>W</span></div>
+                <div class="bar-wrap"><div class="bar" style="--h:45%"></div><span>T</span></div>
+                <div class="bar-wrap"><div class="bar active" style="--h:88%"></div><span>F</span></div>
+                <div class="bar-wrap"><div class="bar" style="--h:40%"></div><span>S</span></div>
+                <div class="bar-wrap"><div class="bar" style="--h:25%"></div><span>S</span></div>
+              </div>
+            </div>
+            <div class="app-categories">
+              <div class="cat-row">
+                <div class="cat-icon" style="background:#f5f5f5;">🛒</div>
+                <div class="cat-info"><span class="cat-name">Shopping</span><span class="cat-sub">7 transactions</span></div>
+                <span class="cat-amt">₹2,770</span>
+              </div>
+              <div class="cat-row">
+                <div class="cat-icon" style="background:#f5f5f5;">☕</div>
+                <div class="cat-info"><span class="cat-name">Food & Drinks</span><span class="cat-sub">12 transactions</span></div>
+                <span class="cat-amt">₹1,540</span>
+              </div>
+              <div class="cat-row">
+                <div class="cat-icon" style="background:#f5f5f5;">⛽</div>
+                <div class="cat-info"><span class="cat-name">Transport</span><span class="cat-sub">3 transactions</span></div>
+                <span class="cat-amt">₹890</span>
+              </div>
+            </div>
+          </div>
+          <div class="phone-home-bar"></div>
+        </div>
+        <div class="float-tag float-tag-1">
+          <span class="ft-icon">🤖</span>
+          <div class="ft-text"><strong>AI Insight</strong><span>Budget on track</span></div>
+        </div>
+        <div class="float-tag float-tag-2">
+          <div class="ft-score-circle">78</div>
+          <div class="ft-text"><strong>Health Score</strong><span>Very Good</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section id="features">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-eyebrow">Capabilities</span>
+        <h2 class="section-title">Built for <em>Modern Finance</em></h2>
+        <p class="section-sub">Every tool you need — from real-time tracking to AI-driven insights — in one platform.</p>
+      </div>
+
+      <div class="feature-group-label reveal">Core Features</div>
+      <div class="features-grid">
+        <div class="feat-card reveal"><div class="feat-icon-wrap">📊</div><h3 class="feat-title">Expense Tracking</h3><p class="feat-desc">Add, edit, filter, and search expenses with precision. Full control over your financial data in a clean, intuitive interface.</p></div>
+        <div class="feat-card reveal"><div class="feat-icon-wrap">💰</div><h3 class="feat-title">Smart Budget Engine</h3><p class="feat-desc">Dynamic budget allocation across categories. Set limits, track usage in real-time, and stay within boundaries effortlessly.</p></div>
+        <div class="feat-card reveal"><div class="feat-icon-wrap">🔁</div><h3 class="feat-title">Recurring Automation</h3><p class="feat-desc">Auto-log subscriptions, EMIs, and regular bills. Never miss a recurring expense with smart background automation.</p></div>
+        <div class="feat-card reveal"><div class="feat-icon-wrap">🔔</div><h3 class="feat-title">Real-Time Alerts</h3><p class="feat-desc">Instant notifications when you approach or exceed budget thresholds. Stay informed and in control, always.</p></div>
+        <div class="feat-card reveal"><div class="feat-icon-wrap">🎯</div><h3 class="feat-title">Savings Goal Tracking</h3><p class="feat-desc">Define saving targets and track progress visually. Celebrate milestones as you build meaningful financial habits.</p></div>
+        <div class="feat-card reveal"><div class="feat-icon-wrap">📈</div><h3 class="feat-title">Category Analytics</h3><p class="feat-desc">Visual breakdowns of your spending across categories. Understand your money flow at a glance with dynamic charts.</p></div>
+      </div>
+
+      <div class="feature-group-label ai-label reveal">AI Features <span class="ai-tag">✦ Powered by AI</span></div>
+      <div class="features-grid">
+        <div class="feat-card ai-card reveal"><div class="feat-icon-wrap">🧠</div><h3 class="feat-title">Smart Text Parsing</h3><p class="feat-desc">Type "Spent ₹200 on lunch" and Ledger's AI extracts amount, category, and date automatically.</p></div>
+        <div class="feat-card ai-card reveal"><div class="feat-icon-wrap">🔮</div><h3 class="feat-title">Predictive Simulation</h3><p class="feat-desc">AI forecasts your end-of-month expenditure based on historical patterns for proactive decisions.</p></div>
+        <div class="feat-card ai-card reveal"><div class="feat-icon-wrap">💡</div><h3 class="feat-title">Budget Recommendations</h3><p class="feat-desc">Personalized budget suggestions based on your income, spending patterns, and financial goals.</p></div>
+        <div class="feat-card ai-card reveal"><div class="feat-icon-wrap">❤️</div><h3 class="feat-title">Health Score (0–100)</h3><p class="feat-desc">A dynamic score reflecting your financial wellness — updated in real-time as you manage expenses.</p></div>
+        <div class="feat-card ai-card reveal"><div class="feat-icon-wrap">⚡</div><h3 class="feat-title">Risk Indicator</h3><p class="feat-desc">Smart detection of financial risk levels — Low, Moderate, or High — with actionable suggestions.</p></div>
+        <div class="feat-card ai-card reveal"><div class="feat-icon-wrap">🧬</div><h3 class="feat-title">Behavioral Insights</h3><p class="feat-desc">Identify spending triggers, peak expense periods, and category trends with AI behavioral profiling.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how-it-works">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-eyebrow">Process</span>
+        <h2 class="section-title">How <em>Ledger</em> Works</h2>
+        <p class="section-sub">Four steps to transform how you manage money — backed by intelligent AI.</p>
+      </div>
+      <div class="steps-row">
+        <div class="step-card reveal"><div class="step-num">01</div><h3 class="step-title">Add Expenses</h3><p class="step-desc">Log manually or let AI parse your natural language. Quick entry that fits your lifestyle.</p></div>
+        <div class="step-connector reveal"><div class="step-line"></div></div>
+        <div class="step-card reveal"><div class="step-num">02</div><h3 class="step-title">Set Budgets & Goals</h3><p class="step-desc">Define monthly budgets by category and set meaningful savings targets that keep you focused.</p></div>
+        <div class="step-connector reveal"><div class="step-line"></div></div>
+        <div class="step-card reveal"><div class="step-num">03</div><h3 class="step-title">Get AI Insights</h3><p class="step-desc">Receive intelligent predictions, recommendations, and behavioral patterns unique to your finances.</p></div>
+        <div class="step-connector reveal"><div class="step-line"></div></div>
+        <div class="step-card reveal"><div class="step-num">04</div><h3 class="step-title">Improve Health</h3><p class="step-desc">Act on insights to raise your Financial Health Score and build lasting, disciplined habits.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINANCIAL HEALTH -->
+  <section id="health">
+    <div class="container health-grid">
+      <div class="health-left reveal">
+        <div class="ring-wrap">
+          <svg class="ring-svg" width="260" height="260" viewBox="0 0 260 260">
+            <defs>
+              <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9"/>
+                <stop offset="100%" stop-color="#aaaaaa" stop-opacity="0.6"/>
+              </linearGradient>
+            </defs>
+            <circle class="ring-bg" cx="130" cy="130" r="110" stroke-width="12" fill="none"/>
+            <circle class="ring-fg" id="ringFg" cx="130" cy="130" r="110" stroke-width="12" fill="none"
+              stroke="url(#ringGrad)" stroke-linecap="round"
+              stroke-dasharray="691" stroke-dashoffset="691"
+              transform="rotate(-90 130 130)"/>
+          </svg>
+          <div class="ring-center">
+            <div class="ring-score" id="ringScore">0</div>
+            <div class="ring-label">Health Score</div>
+          </div>
+        </div>
+        <div class="risk-row">
+          <div class="risk-chip chip-low">● Low Risk</div>
+          <div class="risk-chip chip-mod">● Moderate</div>
+          <div class="risk-chip chip-high">● High Risk</div>
+        </div>
+      </div>
+      <div class="health-right reveal">
+        <span class="section-eyebrow light">Intelligence</span>
+        <h2 class="section-title light-title">Your Financial Health<br /><em>At a Glance</em></h2>
+        <p class="section-sub light-sub">A living score that reflects your financial reality — updated as you act, not just as you track.</p>
+        <div class="hf-list">
+          <div class="hf-item"><div class="hf-icon">🔮</div><div><h4>Predictive Forecasting</h4><p>AI models your spending trajectory to predict month-end balance and flag overspend risks early.</p></div></div>
+          <div class="hf-item"><div class="hf-icon">⚡</div><div><h4>Risk Indicator System</h4><p>Real-time financial risk classification — with specific reasons and a clear improvement path.</p></div></div>
+          <div class="hf-item"><div class="hf-icon">🧬</div><div><h4>Behavioral Profiling</h4><p>Discover your spending triggers, peak expense periods, and category trends with AI analysis.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCREENSHOTS -->
+  <section id="screenshots">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-eyebrow">Interface</span>
+        <h2 class="section-title">Designed with <em>Precision</em></h2>
+        <p class="section-sub">Clean, intuitive screens that make financial management a daily pleasure.</p>
+      </div>
+    </div>
+    <div class="screenshots-outer">
+      <div class="fade-edge fade-l"></div>
+      <div class="fade-edge fade-r"></div>
+      <div class="screenshots-track" id="screenshotsTrack">
+        <!-- Phone 1 -->
+        <div class="ss-phone"><div class="ss-frame"><div class="ss-notch"></div><div class="ss-screen s1">
+          <div class="ss-pill">My Spendings</div>
+          <div class="ss-amount">₹1,483</div>
+          <div class="ss-bar-row">
+            <div class="ss-bar" style="--h:55%"></div><div class="ss-bar" style="--h:35%"></div>
+            <div class="ss-bar" style="--h:70%"></div><div class="ss-bar active" style="--h:90%"></div>
+            <div class="ss-bar" style="--h:45%"></div><div class="ss-bar" style="--h:60%"></div><div class="ss-bar" style="--h:28%"></div>
+          </div>
+          <div class="ss-label-row"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div>
+          <div class="ss-tag">Dashboard</div>
+        </div></div></div>
+        <!-- Phone 2 -->
+        <div class="ss-phone"><div class="ss-frame"><div class="ss-notch"></div><div class="ss-screen s2">
+          <div class="ss-pill">My Budget</div>
+          <div class="ss-prog-list">
+            <div class="ss-pi"><span class="ss-pi-name">Shopping</span><div class="ss-pb"><div class="ss-pf" style="width:72%;"></div></div><span class="ss-pi-val">72%</span></div>
+            <div class="ss-pi"><span class="ss-pi-name">Food</span><div class="ss-pb"><div class="ss-pf" style="width:45%;background:#555;"></div></div><span class="ss-pi-val">45%</span></div>
+            <div class="ss-pi"><span class="ss-pi-name">Travel</span><div class="ss-pb"><div class="ss-pf" style="width:88%;background:#c0392b;"></div></div><span class="ss-pi-val">88%</span></div>
+            <div class="ss-pi"><span class="ss-pi-name">Health</span><div class="ss-pb"><div class="ss-pf" style="width:31%;background:#888;"></div></div><span class="ss-pi-val">31%</span></div>
+          </div>
+          <div class="ss-tag">Budget</div>
+        </div></div></div>
+        <!-- Phone 3 -->
+        <div class="ss-phone"><div class="ss-frame"><div class="ss-notch"></div><div class="ss-screen s3">
+          <div class="ss-pill">AI Health Score</div>
+          <div class="ss-score-ring">
+            <svg width="100" height="100" viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="40" fill="none" stroke="#ebebeb" stroke-width="7"/>
+              <circle cx="50" cy="50" r="40" fill="none" stroke="#111" stroke-width="7" stroke-linecap="round" stroke-dasharray="251" stroke-dashoffset="63" transform="rotate(-90 50 50)"/>
+            </svg>
+            <div class="ss-score-text">78</div>
+          </div>
+          <div class="ss-risk-tag">● Low Risk</div>
+          <div class="ss-insight-row"><span class="ss-ins-dot"></span><span class="ss-ins-txt">Spending within budget limits</span></div>
+          <div class="ss-insight-row"><span class="ss-ins-dot"></span><span class="ss-ins-txt">Savings goal 62% complete</span></div>
+          <div class="ss-tag">AI Score</div>
+        </div></div></div>
+        <!-- Phone 4 -->
+        <div class="ss-phone"><div class="ss-frame"><div class="ss-notch"></div><div class="ss-screen s4">
+          <div class="ss-pill">Add Expense</div>
+          <div class="ss-inp"><span class="ss-inp-lbl">Amount</span><span class="ss-inp-val">₹ 250.00</span></div>
+          <div class="ss-cat-row">
+            <div class="ss-cat active">🛒</div><div class="ss-cat">☕</div><div class="ss-cat">⛽</div><div class="ss-cat">🏥</div>
+          </div>
+          <div class="ss-ai-box"><span class="ss-ai-lbl">🧠 AI Parsed</span><span class="ss-ai-val">"Lunch at cafe"</span></div>
+          <div class="ss-tag">Add Expense</div>
+        </div></div></div>
+        <!-- Phone 5 -->
+        <div class="ss-phone"><div class="ss-frame"><div class="ss-notch"></div><div class="ss-screen s5">
+          <div class="ss-pill">Savings Goals</div>
+          <div class="ss-goal"><div class="ss-goal-top"><span>Emergency Fund</span><span>₹24,000</span></div><div class="ss-pb"><div class="ss-pf" style="width:62%;"></div></div></div>
+          <div class="ss-goal"><div class="ss-goal-top"><span>Vacation</span><span>₹50,000</span></div><div class="ss-pb"><div class="ss-pf" style="width:33%;background:#555;"></div></div></div>
+          <div class="ss-goal"><div class="ss-goal-top"><span>Laptop</span><span>₹80,000</span></div><div class="ss-pb"><div class="ss-pf" style="width:18%;background:#888;"></div></div></div>
+          <div class="ss-tag">Goals</div>
+        </div></div></div>
+        <!-- Duplicate for infinite scroll -->
+        <div class="ss-phone"><div class="ss-frame"><div class="ss-notch"></div><div class="ss-screen s1">
+          <div class="ss-pill">My Spendings</div><div class="ss-amount">₹1,483</div>
+          <div class="ss-bar-row">
+            <div class="ss-bar" style="--h:55%"></div><div class="ss-bar" style="--h:35%"></div>
+            <div class="ss-bar" style="--h:70%"></div><div class="ss-bar active" style="--h:90%"></div>
+            <div class="ss-bar" style="--h:45%"></div><div class="ss-bar" style="--h:60%"></div><div class="ss-bar" style="--h:28%"></div>
+          </div>
+          <div class="ss-label-row"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div>
+          <div class="ss-tag">Dashboard</div>
+        </div></div></div>
+        <div class="ss-phone"><div class="ss-frame"><div class="ss-notch"></div><div class="ss-screen s2">
+          <div class="ss-pill">My Budget</div>
+          <div class="ss-prog-list">
+            <div class="ss-pi"><span class="ss-pi-name">Shopping</span><div class="ss-pb"><div class="ss-pf" style="width:72%;"></div></div><span class="ss-pi-val">72%</span></div>
+            <div class="ss-pi"><span class="ss-pi-name">Food</span><div class="ss-pb"><div class="ss-pf" style="width:45%;background:#555;"></div></div><span class="ss-pi-val">45%</span></div>
+            <div class="ss-pi"><span class="ss-pi-name">Travel</span><div class="ss-pb"><div class="ss-pf" style="width:88%;background:#c0392b;"></div></div><span class="ss-pi-val">88%</span></div>
+            <div class="ss-pi"><span class="ss-pi-name">Health</span><div class="ss-pb"><div class="ss-pf" style="width:31%;background:#888;"></div></div><span class="ss-pi-val">31%</span></div>
+          </div>
+          <div class="ss-tag">Budget</div>
+        </div></div></div>
+        <div class="ss-phone"><div class="ss-frame"><div class="ss-notch"></div><div class="ss-screen s3">
+          <div class="ss-pill">AI Health Score</div>
+          <div class="ss-score-ring">
+            <svg width="100" height="100" viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="40" fill="none" stroke="#ebebeb" stroke-width="7"/>
+              <circle cx="50" cy="50" r="40" fill="none" stroke="#111" stroke-width="7" stroke-linecap="round" stroke-dasharray="251" stroke-dashoffset="63" transform="rotate(-90 50 50)"/>
+            </svg>
+            <div class="ss-score-text">78</div>
+          </div>
+          <div class="ss-risk-tag">● Low Risk</div>
+          <div class="ss-insight-row"><span class="ss-ins-dot"></span><span class="ss-ins-txt">Spending within budget limits</span></div>
+          <div class="ss-insight-row"><span class="ss-ins-dot"></span><span class="ss-ins-txt">Savings goal 62% complete</span></div>
+          <div class="ss-tag">AI Score</div>
+        </div></div></div>
+        <div class="ss-phone"><div class="ss-frame"><div class="ss-notch"></div><div class="ss-screen s4">
+          <div class="ss-pill">Add Expense</div>
+          <div class="ss-inp"><span class="ss-inp-lbl">Amount</span><span class="ss-inp-val">₹ 250.00</span></div>
+          <div class="ss-cat-row">
+            <div class="ss-cat active">🛒</div><div class="ss-cat">☕</div><div class="ss-cat">⛽</div><div class="ss-cat">🏥</div>
+          </div>
+          <div class="ss-ai-box"><span class="ss-ai-lbl">🧠 AI Parsed</span><span class="ss-ai-val">"Lunch at cafe"</span></div>
+          <div class="ss-tag">Add Expense</div>
+        </div></div></div>
+        <div class="ss-phone"><div class="ss-frame"><div class="ss-notch"></div><div class="ss-screen s5">
+          <div class="ss-pill">Savings Goals</div>
+          <div class="ss-goal"><div class="ss-goal-top"><span>Emergency Fund</span><span>₹24,000</span></div><div class="ss-pb"><div class="ss-pf" style="width:62%;"></div></div></div>
+          <div class="ss-goal"><div class="ss-goal-top"><span>Vacation</span><span>₹50,000</span></div><div class="ss-pb"><div class="ss-pf" style="width:33%;background:#555;"></div></div></div>
+          <div class="ss-goal"><div class="ss-goal-top"><span>Laptop</span><span>₹80,000</span></div><div class="ss-pb"><div class="ss-pf" style="width:18%;background:#888;"></div></div></div>
+          <div class="ss-tag">Goals</div>
+        </div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECURITY -->
+  <section id="security">
+    <div class="container sec-grid">
+      <div class="sec-visual reveal">
+        <div class="shield-scene">
+          <div class="s-ring r1"></div><div class="s-ring r2"></div><div class="s-ring r3"></div>
+          <div class="s-glow"></div>
+          <div class="s-icon">🛡️</div>
+        </div>
+      </div>
+      <div class="sec-content reveal">
+        <span class="section-eyebrow">Trust & Privacy</span>
+        <h2 class="section-title">Security <em>By Design</em></h2>
+        <p class="section-sub">Your financial data deserves the highest protection. Ledger is built privacy-first, from the ground up.</p>
+        <div class="sec-list">
+          <div class="sec-item"><div class="sec-ic">🔐</div><div class="sec-txt"><h4>Firebase Authentication</h4><p>Industry-standard OAuth & email authentication with secure session management.</p></div></div>
+          <div class="sec-item"><div class="sec-ic">☁️</div><div class="sec-txt"><h4>Secure Cloud Database</h4><p>All data synced through Firebase's real-time, secure infrastructure with automatic backups.</p></div></div>
+          <div class="sec-item"><div class="sec-ic">🔒</div><div class="sec-txt"><h4>Encrypted Data Storage</h4><p>Your financial records are encrypted at rest and in transit. Never exposed raw.</p></div></div>
+          <div class="sec-item"><div class="sec-ic">🏛️</div><div class="sec-txt"><h4>Privacy-First Architecture</h4><p>Zero third-party tracking. No ad networks. No data selling. Your information stays yours.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOWNLOAD -->
+  <section id="download">
+    <div class="container dl-inner reveal">
+      <span class="section-eyebrow">Get Started Free</span>
+      <h2 class="dl-heading">Download <em>Ledger</em> Today</h2>
+      <p class="dl-sub">Start building smarter financial habits now.</p>
+      <button class="btn-dl-big ripple-btn" id="mainDownloadBtn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download APK — Free
+      </button>
+      <p class="dl-note">Android · No sign-up required · Version 1.0</p>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container about-grid reveal">
+      <div class="about-left">
+        <span class="section-eyebrow">About</span>
+        <h2 class="section-title">The <em>Vision</em></h2>
+      </div>
+      <div class="about-right">
+        <p class="about-text">Ledger is a privacy-first, AI-powered personal finance platform built to help students and young professionals manage expenses, forecast spending, and build disciplined saving habits using explainable AI insights. The platform combines budgeting intelligence, predictive analytics, and behavioral financial insights into one seamless experience — because understanding your money is the first step to controlling it.</p>
+        <div class="about-tags">
+          <span class="about-tag">Students</span>
+          <span class="about-tag">Young Professionals</span>
+          <span class="about-tag">Explainable AI</span>
+          <span class="about-tag">Privacy-First</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo-row">
+          <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAIAAgADASIAAhEBAxEB/8QAHQABAAICAwEBAAAAAAAAAAAAAAYHBQgDBAkBAv/EAEEQAQABAwMBBAYFCQgCAwAAAAABAgMEBQYRBxIhMUEIE1GBobEUIkJhkTJSU2JxcpKywRUjM0NzosLRNIJEY/H/xAAbAQEAAgMBAQAAAAAAAAAAAAAAAgQBAwUHBv/EADsRAQABAgMECAMGAwkAAAAAAAABAgMEBREGEjFxITJBgZGxwdETM1EHQkNhoeEVkvAWIiNSU3KCorL/2gAMAwEAAhEDEQA/ANogHwTtAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPkzERMzMREeMyD6MZl6/ouJMxf1PGpqjxpiuKpj3RzLHXd7beoninKuXP3bNX9Yh0LOU469GtuzVMf7Z9kJrpjjKSCL0760GZ4mvIj75tOzY3ht67PH9oRRP69uqPjxw215HmVEazYq/lk+JR9WfHRx9Y0rI49TqWJXM+UXqefw5d2mYqiJpmJifOHOuWblqdK6ZjnGiUTE8H0BrZAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHT1XU8HS7Hrs7Jos0z4RPfNX7I8ZRrdm9LOBNWJpnYv5Md1Vye+i3P9Z+Cuc3Lyc3IqyMu/Xeu1eNVU8//AI+1yTY2/jYi9iZ3KJ/mn27/AAV7l+KeiEz1nqBermq3pWLFqnyu3u+r3U+Ee/lE9R1XUtRqmc3NvXo/Nmr6sfsiO6HSHpWAyTA4CI+BbiJ+vGfGelVquVVcZAHUQAAHJYyL9iebF65an20VTHycYxVTFUaTAyuPuPXcfj1eqZM8fn19v58slj761+1+Xcx7/wDqWoj+XhGBz72T4C98yzTPdHmlFdUcJTjH6iZVPH0jTLNft7FyafnEslj9QtNq49fhZVuf1ezVHzhWo5V7Y/Kbv4enKZ99E4v1x2rbxt6bevcc5lVqZ8rlqr+kTDJY+t6Pkcep1PEqmfL1sRP4SpIcq9sDgqvl3Ko56T6QnGJq7YX3RVTXTFVFUVUz4TE8w/ShbV27aq7Vq5Xbn201TDIY+4Nbx+PV6pl8R4RVcmqPwnly732fXo+VeiecTHlMpxiY7YXUKmx977gtcdvItXuP0lqP6cMlj9RM2nj6Rp2Pc9vYrmj58uVe2IzS31Ypq5T76JxiKJWOITj9Q8Cr/wAjT8m3+5VTX8+GSx97bfu8RVk3LMz+ktVf05cq9s5mlnrWKu6NfLVOLtE9qSDG42vaLkceq1TEmZ8qrsUz+Eu/buW7tPat1010+2meYcu7h71mdLlE084mE4mJ4P2A0sgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACvd9btrrruaXpV2aaI5pvXqZ76p86aZ9n3+fz73UbcU4dmdJwrnGRcp5vV0z30Uz5ftn5ftVs9I2Q2apriMdio1j7sT/6n08foqX7v3YAHpaqAAAAAAAAAAAAAAAAAAAAP1buV26u1brqoq9tM8S/ITET0SMjj67rOP/haplxHsm7Mx+Eslj713Da47WVbvRHlctU/0iEcFC9lWBv/ADLNM/8AGEorqjhKaY/UPUKePpGBjXP3Jqo/7ZLH6iYdXH0jTsi37fV1xX8+FcjlXtkspu/hacpmPXROL1cdq18ffG37v5d69Y/1LU/8eWSxtw6Hkcer1TF5nwiuuKZ+PClhy72wWAq+XXVT4T6eqcYmrtXzZvWb1Pas3bdyPbRVEx8HIoOmqqirtU1TTPtieHex9a1fH7rOp5dMez11XH4OVe+z65Hyr8TzjTymU4xMdsLuFRY+89w2e6c2Lsey5apn48csljdQtTo4i/h4t2P1e1TPzlyr2w2Z2+ru1cp94hOMRRKyxBsfqLjTx9I0y7R7fV3Iq+cQyOPvrQbv5deRY/ftc/y8uXe2azWz1rE93T5apxdontSgYnH3LoN//D1TGj9+rsfzcMjYycfIjmxftXY9tFcVfJyr2Ev2Pm0TTziY80oqieDlAV0gAAAAAAAAAAAAAAAAAAABj9walb0jSb+dc4maI4op/OqnwhkFadUtUm/qdvTLdX91jR2q4jzrmP6R85dvZ/K/4ljqLM9WOmrlHvw72u7XuU6oll5F7KybmTfrmu7dqmquqfOZcQPd6aYpiKaY0iHOAGQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAImYmJiZiY84AHdx9W1TH4ixqOXbiPKm9Vx+HLJY+8Nw2e76f6yPZXbpn48csAKV7LcHf+ZapnnEJRXVHCUwx+oOrUcRexsS7Htimqmfn/RksbqLZniMjS66fbNu7FXwmIV6OXe2Uym7xsxHKZjylOL1cdq08ffmhXePWfSrE/r2+flMslj7n0C/+RqliP3+aP5ohTQ5V7YPL6+pVVT3xPnHqnGIqXtj5mJkcfR8qxe5/MuRV8nOoJ28bU9SxuPo+flWuPKi7VEfNyr32fT+Ff8AGn1ifRKMT9YXkKex93bhsd1Oo11x7LlFNXxmOWSx+oGsUd12xiXY/cmmfhP9HLvbC5lR1Jpq5TPrEJxiKFniA4/UWnujI0qY9s273PwmP6sljb90S5xF2jKsz59q3Ex8Jlyr2y+bWetZmeWk+UynF6ie1LBhcfdW37/5Gp2qf9SJo+cQyOPn4OR/4+Zj3v3LtNXylyr2BxNj5tuqnnEwnFUTwl2QFVIAAAAABx5F2ixj3L9yeKLdE11T90RzKjM7JuZmbeyrs/XvVzXV755Wzv7JnG2rmTTPFVyItx/7TET8OVQPUtgMJFNi7iJ4zO74Rr6/op4mrpiAB6CrAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOzj5+djf+Pm5Nnj8y7VT8pZTD3duDGmOM+q7T7LtMVc++e/4sEKl/AYXEfNt01c4iWYqmOEp5pnUOuJinUsCJjzrsVcT/DP/AGl2j69pWqxH0PLom5+iq+rX+E+PuUq+0zNNUVUzMTE8xMeT5nH7E5fiImbOtur8umPCfSYbqcRVHHpX4Kv25vbOwZpsah2szH8O1M/3lPv8/f8AisXS9Qw9TxacnCvU3bc+PHjE+yY8pecZvkGMyqr/ABY1p7Ko4ftPNaouU18HbAcRsQ3qxe7GiY1iJ77mR2vdFM/9wrROurl7nK0/H5/Jorrn3zEf8UFe2bHWfh5Tbn/NrP6z6Q59+da5AH07UAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAO7o2qZmk5kZOHdmir7VM/k1x7Jh0hru2qL1E27kaxPGJInTphc22dfxNcxPWWZ9Xfoj+9szPfT9/wB8fey6jNKz8nTM63mYlfYuUT7qo84n2wuLb2rY+s6bRl2Pqz+TctzPfRV5w8e2n2bnLK/jWem1P/WfpP5fSe6fzvWbu/0TxV31Ovet3RVb5/wbNFHzq/5Iuy28b3r90ahc554vTR/D9X+jEvU8ms/By+zR9KY8ulTuTrVMgDpIgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADNbO1uvRdVpu1TM413ii/THs9v7Y/7YUaMVhbeLs1Wbsa01RpLMTNM6w5c299IzL9+f8y5VX+M8uIG6mmKaYpjhDAAyAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPkzERMzPER4yD6MPqG6dtafE/TtwaVjzH2bmXRFX4c8yjuodXOn+HzE69Tfrj7Nixcr598U8fForxVi3164jvhjVOhUeodfdp2YqjE07VsqqPCZt0UUz75q5+CO6h6Q1+ZmNP2xao9lV/Lmr4RTHzU685wVHGvw1k1hfw1f1DrrvbJ5jHp0vCjym1jzVP++qY+CO6h1O37nc+u3Nm0c/oOzZ/kiFOvaPC09WJn+ubG9DcIaR39zbkyJmb+4NWuzPjNeZcq+cvxZ3Dr9mebWuanbn9XLrj+qv8A2mo/058TebvjTbTuou+MCYnH3RqVXHhF6766Pwr5TDQuvG7MOqmnVMXA1O39qZomzcn30/Vj+FYtbR4aroriY/X+vA3obMisdq9bNoavVRZ1Cq/o+RV3cZEdq1z91dPl99UQsnFyLGVj0ZGLftX7NyOaLluuKqao9sTHdLsWMVZxEa2qolnVygN7IAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADjv3rVi3Ny/dotUR41V1RER75ByCP6hvbaGn8/S9y6VRVHjTGVRVV+ETMo7qHWXp/icxRq13Kqj7NjGuT8ZiI+KvXjMPb61cR3wxqsIU3qHpA7dt8xgaLqmRMfpZotRP4TV8kd1H0hNVr5/s/bmFY9nr79V35RSp151gqPv68ok1hsMNV9Q63b8yufU5WFhc/oMWmeP4+0j2o9Q98Z/P0jdGpRE+MWb3qo/CjhSr2kw0dWmZ8Pdjebj3K6LdE13KqaKYjmaqp4iGF1DeG1NP5jM3HpNmqPs1ZdHa/Dnlpjm52bm1dvMzMjJq9t25Nc/GXXU7m01X3LfjP7MbzbTUOsPT/AA+YjWqsmqPs2Me5V8ZiI+KPah1+2vamYwtK1XJmPCa6aLdM/wC6Z+DWwU69ocXVw0ju9zeleGoekLnV8xp+2caz7Jv5NVz4RTT80d1DrlvrJ59Rc07C/wBHG54/jmpWIp15tjK+Nye7o8mNZSzUOpG+s7n1+59Qp58fU1xZ/kiEez9T1LUKpqz9Qy8uZnmZvXqq/nLqCnXfu3OvVM85YAGoAAAAAAAAEg2hvHcW1Mn1ui6jcs25q5rsVfWtXP20T3e+OJ+9HxO3cqt1b1E6SNp+mnV3RN1VW9P1GKNK1WqYppt11/3V6f1Kp8/1Z7+/u5WW0OiZiYmJ4mPCV3dGur93FuWdA3blTcxp4oxs65PNVufKm5PnT+t4x593fH1mWZ9vzFrE8fr7+6cVNgwH06QAAAAAAAAAAAAAAAAAADr5mbh4dPazMvHx6fbduRRHxJmI6ZHYEY1DqDsjB5+kbo0yZjxi1fi7P4Uco5qPW3YWLz6nLzc3j9Bi1Rz/AB9lVrx2Gt9a5Ed8MarKFJ6h6QmlUc/2ftzNv+z19+m18oqR3UPSB3Dc5jB0TTMeP/tqruzH4TSp155gqPv68ok3obHDVDUOs2/8vmLeq2cSmfGLGLb+dUTPxRzUd77w1DmMvc2q10z40RlVU0z/AOsTEKdzaTDx1aZnwhjebm5WTjYtv1mTkWrFH51yuKY/GWA1DfmzMHn6TufSomPGmjJpuVR7qZmWml+9dv3JuX7td2ufGquqZmffL8Kde01c9S3Ec519mN5tZqHWnYOLz6rUcnMmPKxi1/OqKYR3UfSD0O3z/Z+gajkez19yi1z+Haa6inXtDjKuGkco99TeldGoekHrdzn+z9A0/H9nrrld35dlHdQ61b+yomLWoYuHE/oMWj/nFSuRTrzXGV8bk93R5Maykuob93pnxMZO59VmmfGm3kVW4n3U8QwGVk5OVc9ZlZF2/X+dcrmqfxlwinXduXOvVM82ABrAAAAAAAAAAAAAAAAAAAAAAAAAAG+QD1ZtAAAAAdHUNX0nT4mc/VMLEiPH1+RTRx+MsTVFMayO8IfqPU7YWDz67c2FXx+g7V7+SJR3UOuuyMbmMenU82fL1WPFMf76oVa8wwtvrXI8WNYWkKM1D0hsamJjT9sXrk+VV/Kinj3RTPzR3Uevu673NOHpulYtM+c0V3Ko981RHwU689wVHCrXlEm9DZUaj6j1c6gZvMTr1Viifs2LFujj3xTz8Ud1DdW5tQ5+nbg1TIifs3MuuY/DnhTr2lsR1KJnwj3Y3m6GdqWnYFPazs/FxY9t69TR85R7Ueo+xcDn1+59Oq48fUXPXfyctOaqqqqpqqmZmfGZnxfFOvaa5PUtxHOdfZjebSaj1y2Li8+ouajnceHqMbjn+OaUd1D0hcCiZjA21k3vZN/Jpt/CKamvopV5/jKuExHKPfVjelcOodf9zXeYwdI0rGifO5FdyY/3RHwR3UesPUDM5iNapxqJ+zYxrdPxmJn4oAKdeZ4uvjcnx08jWWc1DeG69Q5+mbk1a9TP2Zy64p/hieGFuV13K5ruV1V1T4zVPMy/IqV3K6+mqdWABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAb5APVm0dbUs/B0zDrzNRy7GJj0flXb1yKKY98qy6m9ZNL29cuaZoNNrVNSp+rXX2v7izP3zH5U/dHvnnua9bo3Lrm5s76Zreo3su5H5EVTxRRHsppjuj3OHjs8s4aZot/3qv0jvRmpfm6+vG3sCquxoOFf1a7Hd62qfU2fdMx2p/CP2qz17rRvnU5qpx8zH0y1P2cSzET/ABVcz+EwrgfMYjOMXf416R+XR+6OsstqW5txalMzqGu6nlRPldyq6o/DnhiZ755kHOqrqrnWqdWABEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAb4XK6LVuq5crpoooiaqqqp4iIjxmZa6dZOrt/Va72g7Wv12dPiZov5lE8V5HtimfKj7/ABn9njz+kL1GnNv3toaJf4xbVXZz79E/4tcT32o/VifH2z3eEd9JvqM5ziZmbFiejtn0hKZAHy6IAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD7MzMzMzzM+MvgAAAAAAAAAAAAAAn3Q7pVuPqvu6jRdFtzZxLXFefqFdEzaxLcz4z7ap4ns0+Mz7IiZgICPTHb3ow9GdK0WjT7+1KdUu9ji7l5mTcm9cnznmmqIp/9YhrH6Vno23un9FzduyreTmbY/8AlY9Uzcu6fPtmfGq1P5099Pnz4g1qAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABYHQzpTuLqxu6jRtGtzYw7MxXqGoV0TNrFtzPjPtqniezT4zPsiJmA+dDulO5Oq+7KNH0W1NnDtTFWoahXRM2sS3PnPtqniezT4zPsiJmPTDpdsLbnTjaONtrbWJFnGtfWu3auJu5FyY+tcuVedU8fsiOIjiIiH76Z7G27072li7Z21hxj4liOa66u+5fuTH1rlyr7VU8e7uiOIiISYBx5ePYy8W7i5Vm3esXqJt3bdymKqa6ZjiYmJ8YmHIor0quvWndLdDuaLo121lbvzbM/R7McVU4dE90Xrke382mfGe+e7xDz/wCqGlYWhdSdzaJptXawsDVsrGx555/u6LtVNPf590QjjkyL13IyLmRfuV3b12ua7ldc81VVTPMzM+czLjAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABc/oy9CNX6t61OZlzf07auHXxmZ0U/Wu1ePqbPPdNfhzPhTE8zzMxEhTA9Kr/AKK3RO5o86fTtjItXOx2YzKNRv8Ar4n87vqmnn7pp4+5pV6RfRbXekW5YtXpuZ+gZdc/2dqUUcRX5+rucd1NyI8vCY7484gKqAABPuh3SvcfVfd1Gi6LbmziWuK9Qz66Zm1iW5nxn21TxPZp8Zn2REzAfvoZ0o3H1Y3ZRo+jW5sYVmYq1DUK6Jm1i2585/OrniezT4zPsiJmPTDphsTbvTraONtrbWHFjFsx2rlyribuRcmPrXLlXnVPH7IjiI4iIh96Z7G27072li7a21hxj4lmOa66u+5fuT+VcuVfaqn4d0RxERCTAAov0qOvendLNFr0bRrlnM3fmWucex3VU4dE/wCddj+Wnznv8PEPnpSdf9M6WaXXoujVWc/d2Va5s2Z+tRh0z4Xbvzpp8/Pu8fOnXNV1LXNYytY1jNvZ2fl3Zu5GReq7VdyqfGZl81nU9Q1nVcrVdVzL2bnZdybt+/eq7VdyufGZl0wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAfq3T27lNHMU9qYjmfJ6+7G29pe1NoaVt3RbNFnAwMaizZimOO1xHfVPtmqeapnzmZl5AN/vQ36+4e79GwthbpyaLG5MKzFrDvXJ4pz7VMcRHP6WIjvj7URzHmDZpht7bX0Pee2czbm48C3nadmUdm5br8Ynyqpnxpqie+JjviWZAeXvpF9Fde6R7lm3di7nbey65/s/Uoo7qo8fV3OO6m5EeXhMd8ecRVL2B3ltrRN37bzNvbhwLWdp2ZR2LtquPwqifGKonviY74lofrfok73tdYKNr6ZM3Ns5Ezft63XTzRZx4nvpriOOb0cxEUx+V4xxHMwFW9DulO5Oq+7KNH0W1NnDtTFWfqFdEzaxLc+c+2qeJ7NPjM+yImY9MOl2wtudONo422ttYkWca19a7dq4m7kXJj61y5V51Tx+yI4iOIiIfvpnsbbvTvaWLtnbWHGPiWI5rrq4m5fuTH1rlyr7VU8e7uiOIiISYAFF+lR170/pXotejaNcs5e78y1zj2Z4qpw6J/zrsfy0z4z3z3eIfPSk6/6Z0r0uvRNGqs5+78q1zZsT9ajDpnwu3fv86aPPxniPHzp1zVdS1zWMrWNYzb2dn5d2buRkXqu1XcqnxmZfnWdT1DWdVytV1XMvZudl3Zu3796uaq7lczzMzMuoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA5cTJyMPKtZeJfuWMizXFy1dt1TTVRVE8xMTHfExPm4gHoJ6JfpF42/MbH2dvHJt4+6rVHZx8irimjUaYjy8ou8eNP2vGPOI2UeNeNfvY2Tayca9cs37VcV27luqaaqKonmKomO+Jie/l6A+iL6Q9jfuHY2bvHKt2d12KOzj5FfFNOpURHjHlF2I8Y8/GPOIDZMAAFF+lT170/pZotejaNcs5e78y1zj2J+tTh0T/nXY/lp857/DxD56UnX/AEzpZpdei6NVZz93ZVrmzYn61GHTPhdu/f500efnxHj5065qupa5rGVrGsZt7Oz8u7N3IyL1XaruVT4zMvms6nqGs6rlarquZezc7LuTdv371XaruVz4zMumAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA5cTIyMPKtZeJfu4+RZri5au26pproqieYqiY74mJ7+XEA9BPRL9IzG37i4+zt5ZNvH3Xap7OPkVcU0alTEeMeUXePGnwnxjziNlHjXjX7+Lk2snGvXLN+1XFdu5bqmmqiqJ5iYmO+JifNsPp3ph9VcTa1OkVWdDyc2i36unVL2NXN/w47U0xXFE1/fNPHtiQbMelJ1/0zpXpdei6NVZzt35VrmzYn61GHTPhdu/OmjxnxniPHzp1zVdS1zWMrWNYzb2dn5d2buRkXqu1XcqnxmZfnWdT1DWdVytV1XMvZudl3Zu3796uaq7lczzMzMuoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//2Q==" alt="Ledger" class="footer-logo-img" />
+          <span class="footer-name">Ledger</span>
+        </div>
+        <p class="footer-desc">AI-Powered Personal Finance Manager</p>
+        <p class="footer-ver">Version 1.0</p>
+      </div>
+      <div class="footer-col">
+        <span class="footer-col-title">Product</span>
+        <a href="#features">Features</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#health">AI Score</a>
+        <a href="#download">Download</a>
+      </div>
+      <div class="footer-col">
+        <span class="footer-col-title">Company</span>
+        <a href="#about">About</a>
+        <a href="#security">Security</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Contact</a>
+      </div>
+      <div class="footer-col">
+        <span class="footer-col-title">Connect</span>
+        <div class="social-row">
+          <a href="#" class="social-btn" title="GitHub">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          </a>
+          <a href="#" class="social-btn" title="LinkedIn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="#" class="social-btn" title="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container footer-bottom-row">
+        <p class="footer-copy">© 2025 Ledger. All rights reserved. Built with ♥ for smart finance.</p>
+        <button id="scrollTopBtn" class="scroll-top-btn" title="Back to top">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
